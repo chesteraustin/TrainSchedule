@@ -24,7 +24,39 @@
 
 <body class="container">
 
-</div>
+<!--Report of available trains -->
+<table id="trains" class="table">
+	<thead>
+  	<tr>
+  		<th>Train Name</th>
+  		<th>Destination</th>
+  		<th>Initial Departure Time</th>
+  		<th>Frequency (minutes)</th>
+  	</tr>
+  	</thead>
+  	<tbody></tbody>
+</table>
+
+<!--Form to add new schedule-->
+<form role="form">
+	<div class="form-group">
+		<label for="trainName-input">Train Name</label>
+		<input class="form-control" id="trainName-input" type="text">
+	</div>
+	<div class="form-group">
+		<label for="destination-input">Destination</label>
+		<input class="form-control" id="destination-input" type="text">
+	</div>
+	<div class="form-group">
+		<label for="initialDeparture-input">Initial Departure Time</label>
+		<input class="form-control" id="initialDeparture-input" type="text">
+	</div>
+	<div class="form-group">
+		<label for="frequency-input">Frequency Name</label>
+		<input class="form-control" id="Frequency-input" type="text">
+	</div>
+	<button class="btn btn-default" id="add-train" type="submit">New Train Schedule</button>
+</form>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
