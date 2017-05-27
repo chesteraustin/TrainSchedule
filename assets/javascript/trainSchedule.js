@@ -31,7 +31,8 @@ function displaySchedule(snapshot, trains) {
 			"name": trains.name,
 			"destination": trains.destination,
 			"initialDeparture": trains.initialDeparture,
-			"frequency": trains.frequency
+			"frequency": trains.frequencyRoute,
+			"minutesPassed":  moment().diff(moment(trains.initialDeparture, 'HH:mm'), "minutes")
 		}
 	}
 	else {
@@ -42,16 +43,27 @@ function displaySchedule(snapshot, trains) {
 			"frequency": "0"
 		}
 	}
-
+	console.log(train);
+	var lastArrival = train.minutesPassed % train.frequency; //minutes ago
+	var lastArrivalTime = moment().diff(lastArrival, "minutes");
+	var minutesAway = train.frequency - lastArrival; //in minutes
+	
+	console.log(lastArrival);
+	console.log(moment(lastArrivalTime));
 	var names_td = $("<td>").text(train.name);
 	var destination_td = $("<td>").text(train.destination);
 	var initialDeparture_td = $("<td>").text(train.initialDeparture);
 	var frequency_td = $("<td>").text(train.frequency);
+	var lastArrivalTime_td = $("<td>").text(moment(lastArrivalTime).format("HH:mm"));
+	var minutesAway_td = $("<td>").text(minutesAway);
+
 
 	var trains_tr = $("<tr>").append(names_td)
 								.append(destination_td)
 								.append(initialDeparture_td)
-								.append(frequency_td);
+								.append(frequency_td)
+								.append(lastArrivalTime_td)
+								.append(minutesAway_td);
 
 	$("#trains > tbody").append(trains_tr);
 }
